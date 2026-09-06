@@ -1,5 +1,7 @@
 # APIx — Real-time Airfare Price Index
 
+[![CI](https://github.com/risheekmahesh/AIR-FARE-INDEX/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/risheekmahesh/AIR-FARE-INDEX/actions/workflows/ci.yml)
+
 APIx is a Smart India Hackathon 2026 prototype for the Ministry of Statistics and Programme Implementation (MoSPI). It demonstrates how a transparent, automated airfare index can complement CPI collection by measuring dynamic route-specific prices across Indian domestic sectors and advance-purchase windows.
 
 > **Important data disclosure:** every fare shown in this repository is realistic synthetic/sample data generated locally. It stands in for a production pipeline that would ingest approved airline and OTA feeds; no live scraping is performed.
@@ -102,3 +104,7 @@ The demo basket is DEL-BOM, DEL-BLR, BOM-BLR, DEL-CCU, BLR-HYD, and MAA-DEL. Eac
 ## Production path
 
 A deployable next step would replace the CSV fixture with a governed ingestion service, source-level schema validation, persistent PostgreSQL storage, freshness monitoring, route-level sample-size thresholds, official traffic weights, and a documented revision policy. The API and frontend contracts are already separated around that boundary.
+
+## Impact
+
+APIx improves the potential accuracy of the CPI Transport and Communication sub-group by measuring dynamic online fares across a defined city-pair basket, airlines, and advance-purchase windows instead of relying only on manual or limited-outlet collection. Its route-level weighting and `/api/index/lead-time` elasticity endpoint preserve the differences between sectors and booking horizons, giving RBI more granular, higher-frequency inputs for monitoring inflation dynamics and monetary-policy conditions than a lagging monthly average alone. For NSO/MoSPI, the FastAPI endpoints expose the cleaned fare records, route metadata, and daily/weekly/monthly index outputs in an auditable, API-consumable form. The committed synthetic fixture, cleaning tests, and documented index methodology make each transformation reproducible while keeping the production data-ingestion boundary explicit.
